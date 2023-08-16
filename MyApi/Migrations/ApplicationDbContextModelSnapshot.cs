@@ -55,6 +55,39 @@ namespace MyApi.Migrations
                             TotalPagar = "200"
                         });
                 });
+
+            modelBuilder.Entity("MyApi.Models.Producto", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Cantidad")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Descripcion")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Nombre")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Precio")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Productos");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Cantidad = "1",
+                            Descripcion = "pan",
+                            Nombre = "Pan bimbo",
+                            Precio = "10"
+                        });
+                });
 #pragma warning restore 612, 618
         }
     }

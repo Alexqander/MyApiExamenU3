@@ -36,10 +36,36 @@ namespace MyApi.Migrations
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
+            migrationBuilder.CreateTable(
+                name: "Productos",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Nombre = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Descripcion = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Precio = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Cantidad = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Productos", x => x.Id);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
             migrationBuilder.InsertData(
                 table: "Pedidos",
                 columns: new[] { "Id", "Direccion", "FechaEntrega", "FechaSolicitud", "MetodoPago", "TotalPagar" },
                 values: new object[] { 1, "Prueb1", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tarjeta", "200" });
+
+            migrationBuilder.InsertData(
+                table: "Productos",
+                columns: new[] { "Id", "Cantidad", "Descripcion", "Nombre", "Precio" },
+                values: new object[] { 1, "1", "pan", "Pan bimbo", "10" });
         }
 
         /// <inheritdoc />
@@ -47,6 +73,9 @@ namespace MyApi.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Pedidos");
+
+            migrationBuilder.DropTable(
+                name: "Productos");
         }
     }
 }
