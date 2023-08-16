@@ -19,6 +19,43 @@ namespace MyApi.Migrations
                 .HasAnnotation("ProductVersion", "7.0.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
+            modelBuilder.Entity("MyApi.Models.Cliente", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Apellidos")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("CorreoElectronico")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Nombre")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("RFC")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Telefono")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Cliente");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Apellidos = "Diaz Salgado",
+                            CorreoElectronico = "angel@outlook.com",
+                            Nombre = "Angel",
+                            RFC = "DISA020127SHD",
+                            Telefono = "7775180616"
+                        });
+                });
+
             modelBuilder.Entity("MyApi.Models.Pedido", b =>
                 {
                     b.Property<int>("Id")

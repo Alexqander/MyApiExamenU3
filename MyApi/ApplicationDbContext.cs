@@ -14,6 +14,7 @@ namespace MyApi
         }
         public DbSet<Pedido>? Pedidos { get; set; }
         public DbSet<Producto>? Productos { get; set; }
+        public DbSet<Cliente>? Cliente {get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -37,6 +38,19 @@ namespace MyApi
                     Descripcion="pan",
                     Precio="10",
                     Cantidad="1"
+
+                }
+
+            );
+
+            modelBuilder.Entity<Cliente>().HasData(
+                new Cliente(){
+                    Id = 1,
+                    Nombre = "Angel",
+                    Apellidos = "Diaz Salgado",
+                    RFC = "DISA020127SHD",
+                    CorreoElectronico = "angel@outlook.com",
+                    Telefono = "7775180616"
 
                 }
 
