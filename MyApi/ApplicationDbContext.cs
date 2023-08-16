@@ -16,7 +16,9 @@ namespace MyApi
         public DbSet<Producto>? Productos { get; set; }
         public DbSet<Cliente>? Cliente { get; set; }
         public DbSet<Proveedores>? Proveedores { get; set; }
-        
+
+        public DbSet<Categoria>? Categoria { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -59,15 +61,25 @@ namespace MyApi
 
             );
             modelBuilder.Entity<Proveedores>().HasData(
-                new Proveedores(){
+                new Proveedores()
+                {
                     Id = 1,
                     NombreEmpresa = "Test",
                     NombreRepartidor = "Test",
                     CorreoElectronico = "correo@correo",
                     Telefono = "7775557794",
-                    
+
                 }
             );
+            modelBuilder.Entity<Categoria>().HasData(
+            new Categoria()
+            {
+                Id = 1,
+                Nombre = "Ventas",
+                FechaCreacion = new DateTime(),
+                FechaActualizacion = new DateTime()
+            }
+        );
         }
 
     }
