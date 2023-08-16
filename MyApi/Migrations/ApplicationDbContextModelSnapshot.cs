@@ -125,6 +125,39 @@ namespace MyApi.Migrations
                             Precio = "10"
                         });
                 });
+
+            modelBuilder.Entity("MyApi.Models.Proveedores", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("CorreoElectronico")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("NombreEmpresa")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("NombreRepartidor")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Telefono")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Proveedores");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CorreoElectronico = "correo@correo",
+                            NombreEmpresa = "Test",
+                            NombreRepartidor = "Test",
+                            Telefono = "7775557794"
+                        });
+                });
 #pragma warning restore 612, 618
         }
     }

@@ -80,6 +80,27 @@ namespace MyApi.Migrations
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
+            migrationBuilder.CreateTable(
+                name: "Proveedores",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    NombreEmpresa = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    NombreRepartidor = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CorreoElectronico = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Telefono = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Proveedores", x => x.Id);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
             migrationBuilder.InsertData(
                 table: "Cliente",
                 columns: new[] { "Id", "Apellidos", "CorreoElectronico", "Nombre", "RFC", "Telefono" },
@@ -94,6 +115,11 @@ namespace MyApi.Migrations
                 table: "Productos",
                 columns: new[] { "Id", "Cantidad", "Descripcion", "Nombre", "Precio" },
                 values: new object[] { 1, "1", "pan", "Pan bimbo", "10" });
+
+            migrationBuilder.InsertData(
+                table: "Proveedores",
+                columns: new[] { "Id", "CorreoElectronico", "NombreEmpresa", "NombreRepartidor", "Telefono" },
+                values: new object[] { 1, "correo@correo", "Test", "Test", "7775557794" });
         }
 
         /// <inheritdoc />
@@ -107,6 +133,9 @@ namespace MyApi.Migrations
 
             migrationBuilder.DropTable(
                 name: "Productos");
+
+            migrationBuilder.DropTable(
+                name: "Proveedores");
         }
     }
 }

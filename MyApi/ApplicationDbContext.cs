@@ -14,7 +14,9 @@ namespace MyApi
         }
         public DbSet<Pedido>? Pedidos { get; set; }
         public DbSet<Producto>? Productos { get; set; }
-        public DbSet<Cliente>? Cliente {get; set; }
+        public DbSet<Cliente>? Cliente { get; set; }
+        public DbSet<Proveedores>? Proveedores { get; set; }
+        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -35,16 +37,17 @@ namespace MyApi
                 {
                     Id = 1,
                     Nombre = "Pan bimbo",
-                    Descripcion="pan",
-                    Precio="10",
-                    Cantidad="1"
+                    Descripcion = "pan",
+                    Precio = "10",
+                    Cantidad = "1"
 
                 }
 
             );
 
             modelBuilder.Entity<Cliente>().HasData(
-                new Cliente(){
+                new Cliente()
+                {
                     Id = 1,
                     Nombre = "Angel",
                     Apellidos = "Diaz Salgado",
@@ -54,6 +57,16 @@ namespace MyApi
 
                 }
 
+            );
+            modelBuilder.Entity<Proveedores>().HasData(
+                new Proveedores(){
+                    Id = 1,
+                    NombreEmpresa = "Test",
+                    NombreRepartidor = "Test",
+                    CorreoElectronico = "correo@correo",
+                    Telefono = "7775557794",
+                    
+                }
             );
         }
 
