@@ -12,15 +12,15 @@ namespace MyApi
         {
 
         }
-        public DbSet<Propietarios>? Propietarios { get; set; }
+        public DbSet<Propietario>? Propietario { get; set; }
 
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
-            modelBuilder.Entity<Propietarios>().HasData(
-            new Propietarios()
+            modelBuilder.Entity<Propietario>().HasData(
+            new Propietario()
             {
                 Id = 1,
                 Nombre = "Erik",
