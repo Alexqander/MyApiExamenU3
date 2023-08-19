@@ -17,21 +17,21 @@ namespace MyApi.Controllers
 
         [HttpGet("Index")] //Tipo de peticion
         public async Task<IActionResult> Index(){ //Numero de argumentos que recibe
-            var listProveedores = await _context.Proveedores.ToListAsync();
-            if(listProveedores == null || listProveedores.Count == 0){
+            var listPropietarios = await _context.Propietarios.ToListAsync();
+            if(listPropietarios == null || listPropietarios.Count == 0){
                 return NoContent();    
             }else {
-                return Ok(listProveedores);
+                return Ok(listPropietarios);
             }
         }
         [HttpPost("Store")]
-public async Task<HttpStatusCode> Store([FromBody] Proveedores proveedor)
+public async Task<HttpStatusCode> Store([FromBody] Propietarios propietario)
 {
-    if (proveedor == null)
+    if (propietario == null)
     {
         return HttpStatusCode.BadRequest;
     }
-    _context.Add(proveedor);
+    _context.Add(propietario);
     await _context.SaveChangesAsync();
     return HttpStatusCode.Created;
 }
@@ -39,42 +39,43 @@ public async Task<HttpStatusCode> Store([FromBody] Proveedores proveedor)
 [HttpGet("Show")]
 public async Task<IActionResult> Show(int id)
 {
-    var proveedor = await _context.Proveedores.FindAsync(id);
-    if (proveedor == null)
+    var propietario = await _context.Propietarios.FindAsync(id);
+    if (propietario == null)
     {
         return NotFound();
     }
-    return Ok(proveedor);
+    return Ok(propietario);
 }
 
 [HttpDelete("Destroy")]
 public async Task<IActionResult> Destroy(int id)
 {
-    var proveedor = await _context.Proveedores.FindAsync(id);
-    if (proveedor == null)
+    var propietario = await _context.Propietarios.FindAsync(id);
+    if (propietario == null)
     {
         return NotFound();
     }
-     _context.Proveedores.Remove(proveedor);
+     _context.Propietarios.Remove(propietario);
     await _context.SaveChangesAsync();
     return Ok();
 }
 
 [HttpPut("Update")]
 
-public async Task<IActionResult> Update(int id, [FromBody] Proveedores proveedor){
-    if(proveedor ==null || proveedor.Id != id){
+public async Task<IActionResult> Update(int id, [FromBody] Propietarios propietario){
+    if(propietario ==null || propietario.Id != id){
         return BadRequest(); //400
     }
-    var entity = await _context.Proveedores.FindAsync(proveedor.Id);
+    var entity = await _context.Propietarios.FindAsync(propietario.Id);
     if (entity == null){
         return NotFound(); //404
     }
 
-    entity.NombreEmpresa = proveedor.NombreEmpresa;
-    entity.NombreRepartidor = proveedor.NombreRepartidor;
-    entity.CorreoElectronico = proveedor.CorreoElectronico;
-    entity.Telefono = proveedor.Telefono;
+    entity.Nombre = propietario.Nombre;
+    entity.Apellidos = propietario.Apellidos;
+    entity.Direccion = propietario.Direccion;
+    entity.CorreoElectronico = propietario.CorreoElectronico;
+    entity.Telefono = propietario.Telefono;
     await _context.SaveChangesAsync();
     return Ok();
     {
