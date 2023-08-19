@@ -1,0 +1,9 @@
+MyApi/bin/
+MyApi/obj/
+
+bin
+obj
+
+/bin/
+/obj/
+.vscode/*
