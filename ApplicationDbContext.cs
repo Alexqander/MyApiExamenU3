@@ -1,4 +1,3 @@
-
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -15,6 +14,10 @@ namespace MyApi
         }
         public DbSet<Servicio>? Servicios { get; set; }
         public DbSet<Paciente>? Pacientes { get; set; }
+
+        public DbSet<Propietario>? Propietario { get; set; }
+
+        public DbSet<Medicamento>? Medicamentos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
 
@@ -45,6 +48,31 @@ namespace MyApi
 
             );
 
+            modelBuilder.Entity<Propietario>().HasData(
+            new Propietario()
+            {
+                Id = 1,
+                Nombre = "Erik",
+                Apellidos = "Tapia",
+                Direccion = "UTEZ",
+                CorreoElectronico = "ErikT@Utez",
+                Telefono = "7772958888"
+            }
+        );
+
+
+            modelBuilder.Entity<Medicamento>().HasData(
+                            new Medicamento()
+                            {
+                                Id = 1,
+                                Nombre = "Paracetamol",
+                                Descripcion = "Analgésico y antipirético",
+                                DosisRecomendada = "2g de paracetamol",
+                                FormaAdministracion = "Solución oral",
+                                Indicaciones = "Tomar cada 8 horas durante 10 dias."
+                            }
+
+                        );
 
         }
 
