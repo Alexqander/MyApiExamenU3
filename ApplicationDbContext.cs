@@ -1,3 +1,4 @@
+
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -13,10 +14,10 @@ namespace MyApi
 
         }
         public DbSet<Servicio>? Servicios { get; set; }
-
-
+        public DbSet<Paciente>? Pacientes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
+
         {
             modelBuilder.Entity<Servicio>().HasData(
                 new Servicio()
@@ -30,7 +31,23 @@ namespace MyApi
                 }
 
             );
+
+            modelBuilder.Entity<Paciente>().HasData(
+                new Paciente()
+                {
+                    Id = 1,
+                    Nombre = "Guarumo",
+                    Especie = " Perro",
+                    Raza = "French Poodle",
+                    Peso = 12,
+                    FechaNacimiento = new DateTime()
+                }
+
+            );
+
+
         }
 
     }
+
 }
