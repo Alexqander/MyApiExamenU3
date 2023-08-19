@@ -18,10 +18,10 @@ namespace MyApi.Controllers
             _context = context;
         }
 
-        [HttpGet("Index")] 
+        [HttpGet("Index")]
         public async Task<IActionResult> Index()
         { //Numero de argumentos que recibe
-            var listPacientes = await _context.Paciente.ToListAsync();
+            var listPacientes = await _context.Pacientes.ToListAsync();
             if (listPacientes == null || listPacientes.Count == 0)
             {
                 return NoContent();
@@ -48,7 +48,7 @@ namespace MyApi.Controllers
         [HttpGet("Show")]
         public async Task<IActionResult> Show(int id)
         {
-            var Paciente = await _context.Paciente.FindAsync(id);
+            var Paciente = await _context.Pacientes.FindAsync(id);
             if (Paciente == null)
             {
                 return NotFound();
@@ -60,22 +60,24 @@ namespace MyApi.Controllers
         [HttpDelete("Destroy")]
         public async Task<IActionResult> Destroy(int id)
         {
-            var Paciente = await _context.Paciente.FindAsync(id);
+            var Paciente = await _context.Pacientes.FindAsync(id);
             if (Paciente == null)
             {
                 return NotFound();
             }
-            _context.Paciente.Remove(Paciente);
+            _context.Pacientes.Remove(Paciente);
             await _context.SaveChangesAsync();
             return Ok();
         }
         [HttpPut("Update")]
-        public async Task<IActionResult> Update([FromBody] Paciente Paciente){
-            if(Paciente == null ){
+        public async Task<IActionResult> Update([FromBody] Paciente Paciente)
+        {
+            if (Paciente == null)
+            {
                 return BadRequest();
             }
 
-            var entity = await _context.Paciente.FindAsync(Paciente.Id);
+            var entity = await _context.Pacientes.FindAsync(Paciente.Id);
 
             if (entity == null)
             {
@@ -87,7 +89,7 @@ namespace MyApi.Controllers
             entity.Raza = Paciente.Raza;
             entity.Peso = Paciente.Peso;
             entity.FechaNacimiento = Paciente.FechaNacimiento;
-            
+
             await _context.SaveChangesAsync();
 
             return Ok();

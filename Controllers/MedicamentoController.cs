@@ -84,7 +84,7 @@ namespace MyApi.Controllers
             entity.Descripcion = medicamento.Descripcion;
             entity.DosisRecomendada = medicamento.DosisRecomendada;
             entity.FormaAdministracion = medicamento.FormaAdministracion;
-             entity.Indicaciones = medicamento.Indicaciones;
+            entity.Indicaciones = medicamento.Indicaciones;
             await _context.SaveChangesAsync();
             return Ok();
         }
