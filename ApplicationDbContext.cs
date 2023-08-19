@@ -15,7 +15,7 @@ namespace MyApi
         public DbSet<Servicio>? Servicios { get; set; }
         public DbSet<Paciente>? Pacientes { get; set; }
 
-        public DbSet<Propietario>? Propietario { get; set; }
+        public DbSet<Propietario>? Propietarios { get; set; }
 
         public DbSet<Medicamento>? Medicamentos { get; set; }
 

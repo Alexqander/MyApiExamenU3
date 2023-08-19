@@ -8,10 +8,10 @@ namespace MyApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PropietariosController : ControllerBase
+    public class PropietarioController : ControllerBase
     {
         private readonly ApplicationDbContext _context; //Esto es usado instead of this.context
-        public PropietariosController(ApplicationDbContext context)
+        public PropietarioController(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -19,18 +19,18 @@ namespace MyApi.Controllers
         [HttpGet("Index")] //Tipo de peticion
         public async Task<IActionResult> Index()
         { //Numero de argumentos que recibe
-            var listPropietarios = await _context.Propietarios.ToListAsync();
-            if (listPropietarios == null || listPropietarios.Count == 0)
+            var listPropietario = await _context.Propietarios.ToListAsync();
+            if (listPropietario == null || listPropietario.Count == 0)
             {
                 return NoContent();
             }
             else
             {
-                return Ok(listPropietarios);
+                return Ok(listPropietario);
             }
         }
         [HttpPost("Store")]
-        public async Task<HttpStatusCode> Store([FromBody] Propietarios propietario)
+        public async Task<HttpStatusCode> Store([FromBody] Propietario propietario)
         {
             if (propietario == null)
             {
@@ -67,7 +67,7 @@ namespace MyApi.Controllers
 
         [HttpPut("Update")]
 
-        public async Task<IActionResult> Update(int id, [FromBody] Propietarios propietario)
+        public async Task<IActionResult> Update(int id, [FromBody] Propietario propietario)
         {
             if (propietario == null || propietario.Id != id)
             {
